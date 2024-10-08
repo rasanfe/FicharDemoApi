@@ -20,8 +20,7 @@ namespace FicharApi.Services.Impl
         {
             string nombreEmpresa = "";
 
-            // Obtener el número máximo de conexión para el año actual
-            var sql = @"
+             var sql = @"
                     SELECT rtrim(nombre) 
                     FROM empresas
                     WHERE empresa = @Empresa;";

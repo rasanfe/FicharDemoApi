@@ -10,19 +10,13 @@ using FicharApi.Models;
 
 namespace FicharApi.Services.Impl
 {
-    /// <summary>
-    /// The service needs to be injected into the ConfigureServices method of the Startup class. The sample code is as follows:
-    ///  services.AddScoped<I<NomregistroService>, NomregistroService>();
-    /// </summary>
     public class NomregistroService : INomregistroService
     {
         private readonly DataContext _dataContext;
-        private readonly IUsuariosService _usuarioService;
         
         public NomregistroService(DefaultDataContext dataContext)
         {
             _dataContext = dataContext;
-            _usuarioService = new UsuariosService(dataContext);
         }
 
 
@@ -44,9 +38,6 @@ namespace FicharApi.Services.Impl
                 
                 try
                 {
-                    // Sets the parameter values.
-                    // The parameter direction defaults to ParameterDirection.Input,
-                    // so you can omit it.
                     ParamValue Empresa = ParamValue.New<string>("empresa", empresa);
                     ParamValue Empleado = ParamValue.New<string>("empleado", empleado);
                     ParamValue Mode = ParamValue.New<int>("mode", mode);

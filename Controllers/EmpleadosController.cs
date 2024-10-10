@@ -37,41 +37,5 @@ namespace FicharApi.Controllers
             }
         }
         
-        //GET api/Usuarios/ConductoresEmpresa/{empresa}
-        [HttpGet("{empresa}")]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> ConductoresEmpresaAsync(string empresa)
-        {
-            try
-            {
-                var result = await _iempleadosservice.ConductoresEmpresaAsync(empresa, default);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-            }
-        }
-        
-        //GET api/Usuarios/EmpleadosEmpresas/
-        [HttpGet()]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> EmpleadosEmpresasAsync()
-        {
-            try
-            {
-                var result = await _iempleadosservice.EmpleadosEmpresasAsync(default);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-            }
-        }
-        
-
-
     }
 }

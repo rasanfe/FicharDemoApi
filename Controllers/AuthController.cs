@@ -34,13 +34,7 @@ namespace FicharApi.Controllers
                         bool retorno = true;
                         response = Ok(retorno);
                     }
-                    //else
-                    //{
-                    //    token = "Invalid Credentials";
-                    //}
-
-                    //response = Ok(token);
-                }
+                 }
                 else
                 {
                     response = BadRequest(ModelState.ValidationState);
@@ -49,8 +43,7 @@ namespace FicharApi.Controllers
             }
             catch (Exception ex)
             {
-                //response = StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-                response = Unauthorized();
+                 response = Unauthorized();
             }
             return response;
         }

@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using SnapObjects.Data;
 using DWNet.Data;
-using FicharApi;
 using FicharApi.Models;
 
 namespace FicharApi.Services.Impl
@@ -38,19 +32,13 @@ namespace FicharApi.Services.Impl
                 
                 try
                 {
-                    ParamValue Empresa = ParamValue.New<string>("empresa", empresa);
-                    ParamValue Empleado = ParamValue.New<string>("empleado", empleado);
-                    ParamValue Mode = ParamValue.New<int>("mode", mode);
-                    ParamValue Latitud = ParamValue.New<double>("latitud", latitud);
-                    ParamValue Longitud = ParamValue.New<double>("longitud", longitud);
-
-                    object[] idParams = new object[]
+                     object[] idParams = new object[]
                      {
-                        Empresa,
-                        Empleado,
-                        Mode,
-                        Latitud,
-                        Longitud
+                        empresa,
+                        empleado,
+                        mode,
+                        latitud,
+                        longitud
                      };
 
                     var rowsAffected = await _dataContext.SqlExecutor.ExecuteProcedureAsync(procedureName, idParams, cancellationToken);

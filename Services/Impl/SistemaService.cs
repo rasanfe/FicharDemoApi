@@ -13,9 +13,7 @@ namespace FicharApi.Services.Impl
         public SistemaService(DefaultDataContext dataContext)
         {
             _dataContext = dataContext;
-        }
-        
-               
+        }            
         public async Task<string> NombreEmpresaAsync(string empresa, CancellationToken cancellationToken)
         {
             string nombreEmpresa = "";

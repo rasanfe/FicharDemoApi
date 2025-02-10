@@ -13,35 +13,18 @@ namespace FicharApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class NomregistroController : ControllerBase
-    {
+    public class NomregistroController : ControllerBase {
         private readonly INomregistroService _nomregistroService;
-        
-        public NomregistroController(INomregistroService inomregistroService)
-        {
-            _nomregistroService = inomregistroService;
-        }
-        
-        
+        public NomregistroController(INomregistroService inomregistroService){
+            _nomregistroService = inomregistroService;}
         //GET api/Nomregistro/Retrieve/{as_empresa}/{as_empelado}/{adt_fecha}
         [HttpGet("{as_empresa}/{as_empelado}/{as_fecha}")]
         [ProducesResponseType(typeof(IEnumerable<Dw_Import_Nomregistro>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IEnumerable<Dw_Import_Nomregistro>>> RetrieveAsync(string as_empresa, string as_empelado, string as_fecha)
         {
-            DateTime? fecha;
-            
-            if (as_fecha == null)
-            {
-                fecha = null;
-            }
-            else
-            {
-                fecha = DateTime.Parse(as_fecha);
-            }
-            
-            try
-            {
+           DateTime? fecha = as_fecha == null ? null : DateTime.Parse(as_fecha);
+            try {
                 var result = await _nomregistroService.RetrieveAsync(as_empresa, as_empelado, fecha, default);
                 return Ok(result);
             }
